@@ -30,7 +30,7 @@ const int COM_DELAY = 1000;  // Hvor ofte vi sjekker/sender serielldata (millise
 const int DATA_DEC = 0;      // Hvor mange desimaler vi skal bruke i data som sendes ut
 
 // Tuning-parametre for PID-regulatoren
-float Kp=0.8;   // Startverdi for proportional-forsterkning
+float Kp=0.8;   // Startverdi for proporsjonal-forsterkning
 float Ki=100;   // Startverdi for integral-forsterkning
 float Kd=0.001; // Startverdi for differensial-forsterkning
 
