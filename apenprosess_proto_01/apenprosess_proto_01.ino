@@ -83,6 +83,11 @@ void setup() {
   Serial.begin(9600);// Starter seriellkommunikasjon
   
   lcd.begin(16, 2);// Starter LCD
+  lcd.setCursor(0,0);
+  lcd.print("ApenProsess");// Velkomstmelding
+  lcd.setCursor(0,1);
+  lcd.print("Prototype #01");
+  delay(2000);
   lcd.clear();     // Sletter skjerminnhold  
   // Skriver inn tekst på LCD som skal stå fast hele tiden.
   lcd.setCursor(0,0);
@@ -159,7 +164,7 @@ void loop(){
     // Skriver oppdaterte verdier til LCD-display
     printToLCD(4,0,Setpoint);
     printToLCD(4,1,Input);
-    printToLCD(13,0,Output);
+    printToLCD(13,0,map(Output, 0, 255, 0, 100));// Skalerer visning av utgangsignal 0-100 %
     
     // Sjekk om det er innkommende data og prosesser dette
     if (Serial.available() > 0) {
@@ -188,8 +193,8 @@ void loop(){
 }
 
 /* Funsjon for å skrive verdier til LCD.
- * For tall som er mindre enn 100 legges det til en null foran tallet
- * For tall som er mindre enn 10 legges det til to nuller foran tallet
+ * For tall som er mindre enn 100 legges det til en blank foran tallet
+ * For tall som er mindre enn 10 legges det til to blanke foran tallet
  * Gjør dette for å sikre at det ikke henger igjen noen tall på skjermen fra tidligere
 */
 void printToLCD(int col, int row, double val) {
