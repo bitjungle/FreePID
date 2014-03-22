@@ -150,7 +150,7 @@ void loop(){
     Serial.print(',');                // ,
     Serial.print(Input, DATA_DEC);    // PV
     Serial.print(',');                // , 
-    Serial.print(Output, DATA_DEC);   // OP - avslutter med linjeskift
+    Serial.print(Output, DATA_DEC);   // OP
     Serial.print(',');                // , 
     // Avslutter med en kontrollsum og et linjeskift
     // Kode for kontrollsum er ikke ferdig (obs for avrundingsfeil)
@@ -195,9 +195,9 @@ void loop(){
 void printToLCD(int col, int row, double val) {
   lcd.setCursor(col, row);
   if (val < 10) { 
-    lcd.print("00");
+    lcd.print("  ");
   } else if (val >= 10 && val < 100) {
-    lcd.print("0");
+    lcd.print(" ");
   }
   lcd.print(val,0);
 }
